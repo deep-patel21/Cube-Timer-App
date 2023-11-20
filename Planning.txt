@@ -1,0 +1,3 @@
+Iteration 1:
+-> Research possible APIS for WCA Scramble Generation
+-> Create frontend divs
