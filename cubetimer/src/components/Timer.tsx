@@ -17,9 +17,14 @@ const Timer = () => {
     if (!isActive) {
       setIsActive(true);
       setIsStopped(false);
+      setTime(0); // Reset the timer to 0 when spacebar is pressed down for the next solve
     } else {
       setIsActive(false);
       setIsStopped(true);
+
+      if (time >= 0) {
+        console.log(`Time recorded: ${time} milliseconds`);
+      }
     }
   };
 
@@ -53,17 +58,11 @@ const Timer = () => {
   };
 
   const timerStyle = {
-    color: isStopped ? 'green' : isActive ? 'black' : 'red',
-  };
-
-  const handleReset = () => {
-    setTime(0);
-    setIsActive(false);
-    setIsStopped(false);
+    color: isStopped ? 'green' : (isActive ? 'black' : 'red'),
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen">
       <div
         className='text-[150px] p-2'
         style={timerStyle}
@@ -73,7 +72,6 @@ const Timer = () => {
       >
         {formatTime(time)}
       </div>
-      <button onClick={handleReset}>Reset</button>
     </div>
   );
 };
