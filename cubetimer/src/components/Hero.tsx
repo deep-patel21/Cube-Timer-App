@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Timer from './Timer';
+import ChartComponent from './ChartComponent';
 
 const Hero = () => {
   return (
@@ -9,6 +10,7 @@ const Hero = () => {
       <div className="text-lg mb-8">
         Press the spacebar to start/stop the timer. Hold for 1.5 seconds to start. Single tap to stop.
       </div>
+      <ChartComponent />
       <Timer />
     </div>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import ChartComponent from './ChartComponent';
 
 const Timer = () => {
   const [time, setTime] = useState(0);
@@ -23,7 +24,8 @@ const Timer = () => {
       setIsStopped(true);
 
       if (time >= 0) {
-        console.log(`Time recorded: ${time} milliseconds`);
+        const timeOutput = time / 1000;
+        console.log(`Time recorded: ${timeOutput.toFixed(2)} seconds`);
       }
     }
   };
@@ -58,7 +60,7 @@ const Timer = () => {
   };
 
   const timerStyle = {
-    color: isStopped ? 'green' : (isActive ? 'black' : 'red'),
+    color: isStopped ? 'green' : (isActive ? 'white' : 'red'),
   };
 
   return (
