@@ -1,4 +1,4 @@
-
+'use client';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Chart from 'chart.js'
