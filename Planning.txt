@@ -8,4 +8,4 @@
 -> Formulate Link resources and href with visit buttons
 -> Add Github Logo with href to repo
 -> Add signatures in footer
-
+-> Global change of username after SSD migration
