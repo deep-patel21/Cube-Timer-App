@@ -1,23 +1,33 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Timer from './Timer';
 import ChartComponent from './ChartComponent';
 import TimerLog from './TimerLog';
 
 const Hero = () => {
+  const [recentTimers, setRecentTimers] = useState<number[]>([]);
+
+  const handleTimerRecord = (time: number) => {
+    // Update the recent timers list with the new recorded time
+    setRecentTimers((prevTimers) => {
+      const newTimers = [time, ...prevTimers.slice(0, 9)]; // Keep the latest 10 timers
+      return newTimers;
+    });
+  };
+
   return (
     <div className='flex flex-row w-screen h-screen'>
-        <div className='w-1/5'>
-          <TimerLog />
+      <div className='w-1/5'>
+        <TimerLog recentTimes={recentTimers} />
+      </div>
+      <div className="flex flex-col items-center justify-center h-screen w-screen bg-gray-800 text-white">
+        <div className="text-4xl font-bold mb-4 p-7">Rubik's Cube Timer</div>
+        <div className="text-lg mb-8">
+          Press the spacebar to start/stop the timer. Hold for 1.5 seconds to start. Single tap to stop.
         </div>
-        <div className="flex flex-col items-center justify-center h-screen w-screen bg-gray-800 text-white">
-          <div className="text-4xl font-bold mb-4 p-7">Rubik's Cube Timer</div>
-            <div className="text-lg mb-8">
-              Press the spacebar to start/stop the timer. Hold for 1.5 seconds to start. Single tap to stop.
-            </div>
-          <ChartComponent />
-          <Timer />
-        </div>
+        <ChartComponent />
+        <Timer onTimerRecord={handleTimerRecord} />
+      </div>
     </div>
   );
 };

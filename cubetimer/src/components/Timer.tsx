@@ -3,7 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import ChartComponent from './ChartComponent';
 
-const Timer = () => {
+interface TimerProps {
+  onTimerRecord: (time: number) => void;
+}
+
+const Timer: React.FC<TimerProps> = ({ onTimerRecord }) => {
   const [time, setTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isStopped, setIsStopped] = useState(false);
@@ -26,6 +30,7 @@ const Timer = () => {
       if (time >= 0) {
         const timeOutput = time / 1000;
         console.log(`Time recorded: ${timeOutput.toFixed(2)} seconds`);
+        onTimerRecord(timeOutput);
       }
     }
   };
