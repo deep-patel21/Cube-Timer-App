@@ -1,3 +1,11 @@
-Iteration 1:
 -> Research possible APIS for WCA Scramble Generation
--> Create frontend divs
+-> Create frontend divs [DONE]
+-> Establish Timer functionality and look [DONE]
+-> Add logo [DONE]
+-> Refine Recent Times log
+-> Add footer with download buttons
+-> Formulate PDF resources and href with download buttons
+-> Formulate Link resources and href with visit buttons
+-> Add Github Logo with href to repo
+-> Add signatures in footer
+
