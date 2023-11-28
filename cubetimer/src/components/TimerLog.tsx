@@ -14,7 +14,7 @@ const TimerLog: React.FC<TimerLogProps> = ({ recentTimes }) => {
   }, [recentTimes]);
 
   return (
-    <div className="flex flex-col items-center h-screen bg-gray-800 text-white text-[35px]">
+    <div className="flex flex-col items-center h-screen bg-slate-700 text-white text-[35px]">
       <div className='mt-5'>
         <Image 
             src="/Media/logo.jpg"
