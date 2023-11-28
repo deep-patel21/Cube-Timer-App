@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
 import Chart from 'chart.js/auto';
+import { SolveDataPoint } from '@/types';
 
 interface ChartComponentProps {
   solvesData: SolveDataPoint[];
@@ -26,27 +27,31 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ solvesData }) => {
 
     const options = {
       scales: {
-        x: {
-          type: 'linear',
-          position: 'bottom',
-          scaleLabel: {
-            display: true,
-            labelString: 'Number of Cube Solves',
+        x: [
+          {
+            type: 'linear',
+            position: 'bottom',
+            scaleLabel: {
+              display: true,
+              labelString: 'Number of Cube Solves',
+            },
           },
-        },
-        y: {
-          type: 'linear',
-          position: 'left',
-          scaleLabel: {
-            display: true,
-            labelString: 'Time (seconds)',
+        ],
+        y: [
+          {
+            type: 'linear',
+            position: 'left',
+            scaleLabel: {
+              display: true,
+              labelString: 'Time (seconds)',
+            },
           },
-        },
+        ],
       },
       plugins: {
         tooltip: {
           callbacks: {
-            label: function (context) {
+            label: function (context: { dataset: { data: { [x: string]: any; }; }; dataIndex: number; }) {
               const dataPoint = context.dataset.data[context.dataIndex];
               return `Solve ${context.dataIndex + 1}: ${dataPoint.y.toFixed(2)} seconds`;
             },
@@ -55,17 +60,19 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ solvesData }) => {
       },
     };
 
-    const ctx = document.getElementById('solveChart');
+    const canvasElement = document.getElementById('solveChart') as HTMLCanvasElement | null;
 
-    const solveChart = new Chart(ctx, {
-      type: 'line',
-      data: data,
-      options: options,
-    });
+    if (canvasElement) {
+      const solveChart = new Chart(canvasElement, {
+        type: 'line',
+        data: data,
+        options: options
+      });
 
-    return () => {
-      solveChart.destroy();
-    };
+      return () => {
+        solveChart.destroy();
+      };
+    }
   }, [solvesData]);
 
   return (
@@ -74,6 +81,5 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ solvesData }) => {
     </div>
   );
 };
-
 
 export default ChartComponent;

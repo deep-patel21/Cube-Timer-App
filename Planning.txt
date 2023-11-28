@@ -8,4 +8,5 @@
 -> Formulate Link resources and href with visit buttons
 -> Add Github Logo with href to repo
 -> Add signatures in footer
--> Global change of username after SSD migration
+-> Global change of username after SSD migration [DONE]
+-> Add rubiks cube blender animation in place of logo perhaps, or on the other top corner 
